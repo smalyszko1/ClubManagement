@@ -1,0 +1,74 @@
+﻿@model ClubManagement.Models.Opponent
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Opponent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgSource)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImgSource)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wins)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wins)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Loses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Loses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Draws)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Draws)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScoredGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScoredGoals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LostGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LostGoals)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

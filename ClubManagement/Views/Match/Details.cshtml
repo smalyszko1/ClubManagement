@@ -1,0 +1,84 @@
+﻿@model ClubManagement.Models.Match
+
+<div>
+    <h4>Match</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Day)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPlayers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPlayers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opponent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opponent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsScored)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsScored)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsLost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsLost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlayersString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlayersString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updated)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

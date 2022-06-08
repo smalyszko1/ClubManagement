@@ -1,0 +1,134 @@
+﻿
+
+<div class="tytul">
+    <h1 style="font-family:fantasy;  font-size:50px">CZARNI CZARNA BIAŁOSTOCKA</h1>
+    <p><a href="http://www.90minut.pl/liga/1/liga11274.html" class="btn btn-primary btn-lg">Tabela &raquo;</a></p>
+    <div id="namecze">
+        <div class="boxnextMatch">
+            <h2 style="font-weight:bold">Najbliższy Mecz</h2>
+            @if (ViewBag.IsMatch)
+            {
+                <p class="nextMatch1"> CZARNI CZARNA<img src="~/Content/Images/czarni.jpg" height=75 width=75></p>
+                <p class="nextMatch2">VS</p>
+                <p class="nextMatch3"> <img src="~/Content/Images/@ViewBag.Img" height=75 width=75>@ViewBag.MatchOpponent</p>
+                <p>Data:  @ViewBag.MatchDay Miejsce: @ViewBag.MatchPlace</p>
+                <p><a class="btn btn-default" href='@Url.Action("Details", "Opponent", new { id = ViewBag.NextMatchOpponentID })'>Sprawdź przeciwnika &raquo;</a></p>
+            }
+            else
+            {
+                <p class="nextMatch2">BRAK DANYCH O MECZU</p>
+                <p><a class="btn btn-default" href='@Url.Action("CreateMatch", "Event", new { id = ViewBag.NextMatchOpponentID })'>Dodaj mecz &raquo;</a></p>
+            }
+
+
+
+        </div>
+        <div class="boxnextMatch">
+            <h2 style="font-weight:bold">Ostatni Mecz</h2>
+            <p class="nextMatch1">CZARNI CZARNA<img src="~/Content/Images/czarni.jpg" height=75 width=75></p><p class="nextMatch2">@ViewBag.LastMatchScored : @ViewBag.LastMatchLost </p><p class="nextMatch3"> <img src="~/Content/Images/@ViewBag.LastMatchImg" height=75 width=75> @ViewBag.LastMatchOpponent</p>
+            <p>Data:  @ViewBag.LastMatchDay</p>
+
+
+
+            <p><a class="btn btn-default" href='@Url.Action("AddStats", "Match", new { id = ViewBag.LastMatchID })'>Zobacz statystyki &raquo;</a></p>
+        </div>
+    </div>
+</div>
+
+<div id="dolne">
+    <div class="box">
+        @if (ViewBag.IsTraining)
+        {
+        <h2 class="naglowek">Najbliższy Trening</h2>
+        <p>Data:  @ViewBag.TrainingHour </p>
+        <p>Miejsce: @ViewBag.TrainingPlace </p>
+        <p><a class="btn btn-default" href='@Url.Action("List", "Event")'>Kalendarz &raquo;</a></p>
+        }
+        else
+        {
+        <h2 class="naglowek">Brak treningów</h2>
+        <p><a class="btn btn-default" href='@Url.Action("CreateSoloTraining", "Event")'>Dodaj &raquo;</a></p>
+        }
+    </div>
+
+
+    @*<div class="col-md-4">
+            <h2>Zawodnicy</h2>
+            <p>
+                Aktualna ilość zawodników: @ViewBag.Size
+            </p>
+            <p><a class="btn btn-default" href='@Url.Action("List", "Player")'>Wszyscy &raquo;</a></p>
+        </div>
+    *@
+    <div class="box">
+        <h2 class="naglowek">Składki</h2>
+        <p>Zaległe składki: @ViewBag.Unpaid</p>
+        <p>Uzbierana Kwota: @ViewBag.Paid </p>
+        <p><a class="btn btn-default" href='@Url.Action("List", "Penalty")'>Szczegóły &raquo;</a></p>
+    </div>
+
+    
+        <div class="box">
+            <h2 class="naglowek">Ostatnia wiadomość</h2>
+            <b>@ViewBag.Title </b>
+            <p>@ViewBag.Content</p>
+            <p>@ViewBag.Posted</p>
+            <p><a class="btn btn-default" href='@Url.Action("List", "News")'>Wszystkie &raquo;</a></p>
+        </div>
+  
+</div>
+<style>
+    #namecze {
+        display: flex;
+    }
+    .tytul {
+        text-align: center;
+        background-color: lightgrey;
+        
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .boxnextMatch {
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        max-width: 500px;
+        background-color: ghostwhite;
+    }
+    .nextMatch1 {
+        display: inline;
+        font-weight: bold;
+    }
+    .nextMatch2 {
+        display: inline;
+        font-weight: bold;
+    }
+    .nextMatch3 {
+        display: inline;
+        font-weight: bold;
+    }
+    #dolne {
+        justify-content:space-between;
+            display:flex;
+
+         
+    }
+    .box {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        width: 300px;
+        border: 2px solid black;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: ghostwhite;
+        
+    }
+    .naglowek{
+        text-align:center;
+    }
+
+    
+</style>

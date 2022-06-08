@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ClubManagement.Models.Match>
+
+
+<h1 style="font-family:fantasy; text-align:center; font-size:50px">ROZEGRANE MECZE</h1>
+
+
+
+
+@foreach (var item in Model)
+{
+<div class="boxnextMatch" >
+    <h2 style="font-weight:bold; background-color:@item.ScoreColor">@item.Opponent</h2>
+    <p><p class="nextMatch1">CZARNI CZARNA<img src="~/Content/Images/czarni.jpg" height=75 width=75></p><p class="nextMatch2">@item.GoalsScored : @item.GoalsLost </p><p class="nextMatch3"> <img src="~/Content/Images/@item.OpponentIMG" height=75 width=75> @item.Opponent</p></p>
+    <p>Data:  @item.Day.ToShortDateString()  @item.Time.ToShortTimeString()</p>
+    <p>Zawodnicy: @item.PlayersString</p>
+    
+
+
+    <p>
+        <a class="btn btn-default" href='@Url.Action("AddStats", "Match", new { id = item.Id })'>Zobacz statystyki &raquo;</a>
+        <a class="btn btn-default" href='@Url.Action("AddPlayers", "Match", new { id = item.Id })'>Dodaj zawodników &raquo;</a>
+        <a class="btn btn-default" href='@Url.Action("EditMatch", "Match", new { id = item.Id })'>Ustaw wynik &raquo;</a>
+        <a class="btn btn-default" href='@Url.Action("Delete", "Match", new { id = item.Id })'>Usun &raquo;</a>
+        
+    </p>
+
+</div>
+}
+<style>
+    .boxnextMatch {
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: auto;
+        margin-bottom: 5px;
+        width:700px;
+        margin-top: 5px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        background-color: ghostwhite;
+    }
+
+    .conteiner {
+    }
+
+    .nextMatch1 {
+        display: inline;
+        font-weight: bold;
+    }
+
+    .nextMatch2 {
+        display: inline;
+        font-weight: bold;
+        
+    }
+
+    .nextMatch3 {
+        display: inline;
+        font-weight: bold;
+    }
+
+    
+</style>

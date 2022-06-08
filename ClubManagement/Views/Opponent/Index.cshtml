@@ -1,0 +1,101 @@
+﻿@model IEnumerable<ClubManagement.Models.Opponent>
+
+
+<h1 style="font-family:fantasy; text-align:center; font-size:50px">PRZECIWNICY</h1>
+<button class="mybutton" onclick="@("window.location.href='" + @Url.Action("Create", "Opponent") + "'");"> Dodaj przeciwnika</button>
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+        <div class="box">
+            <div style="float:left">
+                <img src="~/Content/Images/@item.ImgSource" width=150 height=150 />
+            </div>
+            <div style=" margin-left:20px; padding-left:10px;">
+                <h2 style="text-align:center; text-decoration:underline;">@item.Name</h2>
+                <p>Wygrane: @item.Wins</p>
+                <p>Remisy: @item.Draws</p>
+                <p>
+                    Przegrane: @item.Loses
+
+
+                    <a style="float:right" href='@Url.Action("Delete", "Opponent",new { id = item.Id })'>
+                        <img src="~/Content/Images/delete.png" alt="" height=20 width=20 title="Usuń">
+                    </a>
+                    <a style="float:right" href='@Url.Action("Details", "Opponent",new { id = item.Id })'>
+                        <img src="~/Content/Images/staty.png" alt="" height=20 width=20 title="Usuń">
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    }
+</div>
+<style>
+    .box {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        width: 500px;
+        height: auto;
+        border: 2px solid black;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        background-color: ghostwhite;
+        float: left;
+        margin-left: 10px;
+        margin-left: 10px;
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .naglowek {
+        text-align: center;
+        text-decoration: underline;
+    }
+
+    .containter {
+        flex-wrap:nowrap;
+        flex-direction:column;
+        justify-content:space-around;
+    }
+
+    .mybutton {
+        text-decoration: none;
+        text-align: center;
+        color: #3cbabe;
+        border: 2px solid #3cbabe;
+        border-radius: 4px;
+        position: relative;
+        width: 150px;
+        line-height: 40px;
+        display: inline-block;
+        font-family: Arial;
+        font-weight: 600;
+        overflow: hidden;
+    }
+
+        .mybutton:before {
+            content: "";
+            background-color: rgba(255,255,255,0.5);
+            height: 100%;
+            width: 40px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -70px;
+            transform: skewX(-45deg) translateX(0px);
+            transition: none;
+        }
+
+        .mybutton:hover {
+            background-color: #3cbabe;
+            color: #ffffff;
+            border-bottom: 2px solid #319598;
+        }
+
+            .mybutton:hover:before {
+                transform: skewX(-45deg) translateX(250px);
+                transition: all 0.4s ease-in;
+            }
+</style>

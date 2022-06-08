@@ -1,0 +1,113 @@
+﻿@model IEnumerable<ClubManagement.Models.PlayerToMatch>
+
+<h2 style="text-align:center">@ViewBag.Opponent @ViewBag.Score  CZARNI CZARNA <br >@ViewBag.MatchDay</h2>
+<table class="content-table">
+    <tr style="background-color:#808080">
+       
+        <th>
+            Imię
+        </th>
+        <th>
+           Nazwisko
+        </th>
+        <th>
+            ŻK
+        </th>
+        <th>
+            CZK
+        </th>
+        <th>
+            Bramki
+        </th>
+        <th>
+            Asysty
+        </th>
+        <th>
+            Minuty
+        </th>
+        <th>
+            Ocena
+        </th>
+        <th></th>
+    </trtyle="background-color:#808080">
+
+@foreach (var item in Model) {
+    <tr>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YellowCards)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RedCards)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assists)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Minutes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Aktualizuj", "Edit", new { id=item.id }) 
+         
+        </td>
+    </tr>
+}
+
+</table>
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 600px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th {
+            padding: 12px 15px;
+        }
+
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .content-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .content-table tbody tr:last-of-type {
+                border-bottom: 2px solid #808080;
+            }
+
+            .content-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+</style>

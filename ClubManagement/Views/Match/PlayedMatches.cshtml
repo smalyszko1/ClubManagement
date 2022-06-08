@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ClubManagement.Models.PlayerToMatch>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@Html.DisplayFor(model => model.Name)   @Html.DisplayFor(model => model.Surname)
+<table class="table">
+    <tr>
+        
+    
+        <th>
+            ŻK
+        </th>
+        <th>
+            CZK
+        </th>
+        <th>
+            Bramki
+        </th>
+        <th>
+            Asysty
+        </th>
+        <th>
+            Minuty
+        </th>
+        <th>
+           Ocena
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.YellowCards)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RedCards)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Goals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assists)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minutes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            
+        </tr>
+    }
+
+</table>

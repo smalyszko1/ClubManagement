@@ -1,0 +1,77 @@
+﻿@model ClubManagement.ViewModels.RegisterVM
+
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<h2>Rejestracja</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nick, new { htmlAttributes = new { @class = "form-control", type = "text", id = "Username", name = "Username", placeholder = "Wpisz nazwę", onchange = "UserCheck()" } })
+            @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-10">
+            <p id="Status" />
+        </div>
+    </div>
+    @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Wpisz hasło" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @Html.ValidationMessageFor(model => model.Nick, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Potwierdz hasło" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+  
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Rejestruj" class="btn btn-default" />
+        </div>
+    </div>
+
+</div>
+ 
+ 
+
+
+
+
+}
+<script>
+    function UserCheck() {
+        $("#Status").html("Sprawdzam...");
+        $.post("@Url.Action("CheckUsernameAvailability", "Account")",
+            {
+                userdata: $("#Username").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#Status").html('<font color="Green">Nazwa dostępna!.</font>');
+                $("#Username").css("border-color", "Green");
+
+            }
+            else {
+                $("#Status").html('<font color="Red">Nazwa zajęta, spróbuj innej.</font>');
+                $("#Username").css("border-color", "Red");
+            }
+        });
+    }
+</script>

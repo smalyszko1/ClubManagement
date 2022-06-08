@@ -1,0 +1,96 @@
+﻿@model ClubManagement.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4 style="text-align:center; font-size:50px;">@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Surname)</h4>
+<hr />
+<div style="text-align:center"><img src="~/Content/Images/@Html.DisplayFor(model => model.ImgSource)" height=150 width=150 /></div>
+<div>
+
+
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            Narodowość
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+
+        <dt>
+            Data urodzenia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brithday)
+        </dd>
+
+        <dt>
+            Pozycja
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+
+
+        <dt>
+            Ważność badań
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Examination)
+        </dd>
+
+    </dl>
+</div>
+<div id="container">
+
+
+    <div class="box" style="float:left">
+        <h2>Mecze: @Html.DisplayTextFor(model => model.Games) </h2>
+    </div>
+    <div class="box" style="float:left">
+        <h2>Minuty: @Html.DisplayFor(model => model.Minutes)</h2>
+    </div>
+    <div class="box" style="float:left">
+        <h2>Bramki: @Html.DisplayFor(model => model.Goals)</h2>
+    </div>
+    <div class="box" style="float:left">
+        <h2>Asysty: @Html.DisplayFor(model => model.Assists)</h2>
+    </div>
+    <div class="box"style="float:left">
+        <h2>Kartki: <img src="~/Content/Images/zkartka.png" height=24 width=16 />@Html.DisplayFor(model => model.YellowCards)  <img src="~/Content/Images/ckartka.png" height=24 width=16 />@Html.DisplayFor(model => model.RedCards)</h2>
+    </div>
+    <div class="box" style="float:left">
+        <h2>Nieobecności: @Html.DisplayFor(model => model.Absence)</h2>
+    </div>
+
+
+</div>
+<button class="button" onclick="@("window.location.href='" + @Url.Action("PlayedMatches", "Match", new { id = Model.id }) + "'");"> Rozegrane mecze</button>
+
+<style>
+    #container {
+        position: relative;
+        margin-top: auto;
+        height: 75px;
+       display:flex;
+      
+    }
+    .box {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        padding-left: 4px;
+        padding-right: 4px;
+        text-align: center;
+        width: auto;
+        height: auto;
+        margin: 5px;
+        flex-grow: 4;
+    }
+</style>

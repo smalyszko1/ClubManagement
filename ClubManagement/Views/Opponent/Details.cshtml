@@ -1,0 +1,63 @@
+﻿@model ClubManagement.Models.Opponent
+
+<div>
+    <h4 style="text-align:center; font-size:50px;">@Html.DisplayFor(model => model.Name)</h4>
+    <hr />
+    <div style="text-align:center"><img src="~/Content/Images/@Html.DisplayFor(model => model.ImgSource)" height=150 width=150 /></div>
+    
+        <div id="container">
+        
+            
+        <div class="wygrane" style="float:left">
+            <h2>Wygrane: @Html.DisplayTextFor(model =>model.Wins) </h2>
+        </div>
+        <div class="remisy"  style="float:left">
+            <h2>Remisy: @Html.DisplayFor(model => model.Draws)</h2>
+        </div>
+        <div class="przegrane"  style="float:left">
+            <h2>Przegrane: @Html.DisplayFor(model => model.Loses)</h2>
+        </div>
+        <div class="bilans"  style="float:left">
+            <h2>Bilans bramek: @Html.DisplayFor(model => model.ScoredGoals) : @Html.DisplayFor(model => model.LostGoals) </h2>
+        </div>
+        
+        </div>
+
+  </div>  
+<style>
+    #container {
+     
+        position: relative;
+        margin-top:auto;
+      
+        height:75px;
+    }
+    .wygrane {
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .remisy {
+        position: absolute;
+        top: 0;
+        left: 290px;
+     
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .przegrane {
+        position: absolute;
+        top: 0;
+        left: 580px;
+       
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+    .bilans {
+        position: absolute;
+        top: 0;
+        left: 870px;
+        
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    }
+</style>

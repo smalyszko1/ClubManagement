@@ -1,0 +1,83 @@
+﻿
+.multibutton {
+    margin: auto;
+}
+
+.mybutton {
+    text-decoration: none;
+    text-align: center;
+    color: #3cbabe;
+    border: 2px solid #3cbabe;
+    border-radius: 4px;
+    position: relative;
+    width: 150px;
+    line-height: 40px;
+    display: inline-block;
+    font-family: Arial;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+    .mybutton:before {
+        content: "";
+        background-color: rgba(255,255,255,0.5);
+        height: 100%;
+        width: 40px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -70px;
+        transform: skewX(-45deg) translateX(0px);
+        transition: none;
+    }
+
+    .mybutton:hover {
+        background-color: #3cbabe;
+        color: #ffffff;
+        border-bottom: 2px solid #319598;
+    }
+
+        .mybutton:hover:before {
+            transform: skewX(-45deg) translateX(250px);
+            transition: all 0.4s ease-in;
+        }
+
+.content-table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 600px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+    .content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .content-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }

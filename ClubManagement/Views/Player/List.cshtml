@@ -1,0 +1,242 @@
+﻿
+@model IEnumerable<ClubManagement.Models.Player>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<body>
+
+    <h1 style="font-family:fantasy; text-align:center; font-size:50px">LISTA ZAWODNIKÓW</h1>
+
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+
+    <button class="mybutton" onclick="@("window.location.href='" + @Url.Action("Create", "Player") + "'");"> Dodaj zawodnika</button>
+    <table class="content-table">
+
+        <tr style="background-color:#808080">
+            <th>
+                Zdj
+            </th>
+            <th>
+                Imię
+            </th>
+            <th>
+                @Html.ActionLink("Nazwisko", "List", new { sortOrder = 11 })
+            </th>
+            <th>
+                Narodowość
+            </th>
+
+            <th>
+                @Html.ActionLink("Data urodzenia", "List", new { sortOrder = 1 })
+            </th>
+
+            <th>
+                @Html.ActionLink("Pozycja", "List", new { sortOrder = 2 })
+            </th>
+            <th>
+                @Html.ActionLink("Badania", "List", new { sortOrder = 3 })
+            </th>
+            <th>
+                @Html.ActionLink("G", "List", new { sortOrder = 4 })
+            </th>
+            <th>
+                @Html.ActionLink("A", "List", new { sortOrder = 5 })
+            </th>
+            <th>
+                @Html.ActionLink("M", "List", new { sortOrder = 6 })
+            </th>
+            <th>
+                @Html.ActionLink("MIN", "List", new { sortOrder = 7 })
+            </th>
+
+
+            <th>
+                @Html.ActionLink("ŻK", "List", new { sortOrder = 8 })
+            </th>
+            <th>
+                @Html.ActionLink("CK", "List", new { sortOrder = 9 })
+            </th>
+            <th>
+                @Html.ActionLink("NB", "List", new { sortOrder = 10 })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.ReadyToPlay)
+
+                    {<img src="~/Content/Images/ptaszek.png" alt="" height=25 width=25> }
+                    else
+                    {<img src="~/Content/Images/x.png" alt="" height=25 width=25>}
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brithday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    <font style="color:@item.examColor">   @Html.DisplayFor(modelItem => item.Examination)</font>
+
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assists)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Games)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Minutes)
+                </td>
+                <td bgcolor="@item.yellowCardsColor">
+
+                    @Html.DisplayFor(modelItem => item.YellowCards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RedCards)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Absence)
+                </td>
+
+                <td>
+                    <a href='@Url.Action("Details", "Player",new { id = item.id })'>
+                        <img src="~/Content/Images/staty.png" alt="" height=20 width=20 title="Statystyki">
+                    </a>
+                    <a href='@Url.Action("EditInfo", "Player",new { id = item.id })'>
+                        <img src="~/Content/Images/badania.png" alt="" height=20 width=20 title="Termin badań">
+                    </a>
+                    <a href='@Url.Action("Delete", "Player",new { id = item.id })'>
+                        <img src="~/Content/Images/delete.png" alt="" height=20 width=20 title="Usuń">
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+<style>
+    a{
+        color:white;
+       
+    }
+        a:hover {
+            color:black;
+        }
+
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 600px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th {
+            padding: 12px 15px;
+          
+        }
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .content-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .content-table tbody tr:last-of-type {
+                border-bottom: 2px solid #808080;
+            }
+
+            .content-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+    .multibutton {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .mybutton {
+        text-decoration: none;
+        text-align: center;
+        color: #3cbabe;
+        border: 2px solid #3cbabe;
+        border-radius: 4px;
+        position: relative;
+        width: 150px;
+        line-height: 40px;
+        display: inline-block;
+        font-family: Arial;
+        font-weight: 600;
+        overflow: hidden;
+    }
+
+        .mybutton:before {
+            content: "";
+            background-color: rgba(255,255,255,0.5);
+            height: 100%;
+            width: 40px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -70px;
+            transform: skewX(-45deg) translateX(0px);
+            transition: none;
+        }
+
+        .mybutton:hover {
+            background-color: #3cbabe;
+            color: #ffffff;
+            border-bottom: 2px solid #319598;
+        }
+
+            .mybutton:hover:before {
+                transform: skewX(-45deg) translateX(250px);
+                transition: all 0.4s ease-in;
+            }
+</style>

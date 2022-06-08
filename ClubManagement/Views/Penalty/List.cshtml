@@ -1,0 +1,170 @@
+﻿@model IEnumerable<ClubManagement.Models.Penalty>
+
+
+<h1 style="font-family:fantasy; text-align:center; font-size:50px">LISTA KAR</h1>
+
+
+<div class="multibutton">
+    <button class="mybutton" onclick="@("window.location.href='" + @Url.Action("Create", "Penalty") + "'");"> Dodaj nową kare</button>
+    <button class="mybutton" onclick="@("window.location.href='" + @Url.Action("List", "Penalty", new { value = 0 }) + "'");"> Pokaż zapłacone</button>
+    <button class="mybutton" onclick="@("window.location.href='" + @Url.Action("List", "Penalty", new { value = 1}) + "'");"> Pokaż niezapłacone</button>
+</div>
+<style>
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+</style>
+<p style="text-align:center">
+    Zapłacono: @ViewBag.Paid  Niezapłacono:  @ViewBag.Unpaid
+</p>
+
+<table class="content-table">
+    <tr style="background-color:#808080">
+        <th>
+            Zawodnik
+        </th>
+        <th>
+            Rodzaj
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Opis
+        </th>
+        <th>
+            Wartość
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Player)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                <font color="@item.Color">
+                    @Html.DisplayFor(modelItem => item.StatusText)
+                </font>
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+
+                @Html.ActionLink("Ustaw", "Set", new { id = item.Id }) |
+
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 600px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+        .content-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th {
+            padding: 12px 15px;
+        }
+
+        .content-table td {
+            padding: 12px 15px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+            .content-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .content-table tbody tr:last-of-type {
+                border-bottom: 2px solid #808080;
+            }
+
+            .content-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+
+    .mybutton {
+        text-decoration: none;
+        text-align: center;
+        color: #3cbabe;
+        border: 2px solid #3cbabe;
+        border-radius: 4px;
+        position: relative;
+        width: 150px;
+        line-height: 40px;
+        display: inline-block;
+        font-family: Arial;
+        font-weight: 600;
+        overflow: hidden;
+    }
+
+        .mybutton:before {
+            content: "";
+            background-color: rgba(255,255,255,0.5);
+            height: 100%;
+            width: 40px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -70px;
+            transform: skewX(-45deg) translateX(0px);
+            transition: none;
+        }
+
+        .mybutton:hover {
+            background-color: #3cbabe;
+            color: #ffffff;
+            border-bottom: 2px solid #319598;
+        }
+
+            .mybutton:hover:before {
+                transform: skewX(-45deg) translateX(250px);
+                transition: all 0.4s ease-in;
+            }
+
+    .multibutton {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin: 0;
+        top: 50%;
+        left: 50%;
+        margin: auto;
+        text-align: center;
+    }
+</style>
